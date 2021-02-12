@@ -1,7 +1,7 @@
 import memoria as m
 import primer_ajuste as pa
-#import mejor_ajuste as ma
-#import prettytable as PrettyTable
+import mejor_ajuste as ma
+import memoria_global as mg
 
 
 def menu():
@@ -40,14 +40,14 @@ if __name__ == '__main__':
     lista_memoria = []
     lista_trabajos = []
     while True:
-        pa.limpiar()
+        mg.limpiar()
         respuesta = menu()
         if respuesta == 0:
             break
         elif respuesta == 1:
             pa.primer_ajuste(lista_memoria, lista_trabajos)
         elif respuesta == 2:
-            pass
+            ma.mejor_ajuste(lista_memoria, lista_trabajos)
         elif respuesta == 3:
             lista_memoria = leer_memoria_txt('lista_memoria.txt')
             # lista_memoria = leer_memoria_txt(input("Ingrese nombre del archivo: "))
