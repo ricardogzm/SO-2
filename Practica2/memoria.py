@@ -14,10 +14,8 @@ class Bloque:
         self.tamano = tamano
         self.trabajo = Trabajo(None, None, None)
         self.ocupado = False
-        self.mutex_trabajo = threading.Lock()
 
     def modificar_trabajo(self, trabajo: Trabajo):
-        # with self.mutex_trabajo:
         self.ocupado = not self.ocupado
         self.trabajo = trabajo
 

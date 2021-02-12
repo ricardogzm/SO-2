@@ -1,3 +1,4 @@
+import time
 import memoria as m
 import primer_ajuste as pa
 import mejor_ajuste as ma
@@ -49,12 +50,15 @@ if __name__ == '__main__':
         elif respuesta == 2:
             ma.mejor_ajuste(lista_memoria, lista_trabajos)
         elif respuesta == 3:
-            lista_memoria = leer_memoria_txt('lista_memoria.txt')
             # lista_memoria = leer_memoria_txt(input("Ingrese nombre del archivo: "))
+            lista_memoria = leer_memoria_txt('lista_memoria.txt')
+            print("\nArchivo leído con éxito.")
+            time.sleep(1)
+
         elif respuesta == 4:
-            lista_trabajos = leer_trabajo_txt('lista_trabajos.txt')
             # lista_trabajos = leer_trabajo_txt(input("Ingrese nombre del archivo: "))
+            lista_trabajos = leer_trabajo_txt('lista_trabajos.txt')
+            print("\nArchivo leído con éxito.")
+            time.sleep(1)
         else:
             print("Opción inválida.")
-
-

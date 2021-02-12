@@ -1,4 +1,3 @@
-
 import os
 import time
 import threading
@@ -20,19 +19,35 @@ def limpiar():
 lista_mutex = threading.Lock()
 
 
-def imprimir_tabla(lista_memoria: List[m.Bloque]):
+def imprimir_tabla(lista_memoria: List[m.Bloque], lista_trabajos: List[m.Trabajo]):
     while True:
-        t = PrettyTable()
-        t.field_names = ['Número bloque', 'Tamaño bloque', 'Número trabajo', 'Tiempo', 'Tamaño trabajo']
-        for bloque in lista_memoria:
-            t.add_row([bloque.numero, bloque.tamano, bloque.trabajo.numero, bloque.trabajo.tiempo, bloque.trabajo.tamano])
         limpiar()
-        print(t)
-        time.sleep(1)
+
+        lista_mutex.acquire()
+        tabla_memoria = PrettyTable()
+        tabla_memoria.field_names = ['Número bloque', 'Tamaño bloque', 'Número trabajo', 'Tiempo', 'Tamaño trabajo']
+        for bloque in lista_memoria:
+            tabla_memoria.add_row([bloque.numero, bloque.tamano, bloque.trabajo.numero, bloque.trabajo.tiempo, bloque.trabajo.tamano])
+
+        print('Bloques de memoria:')
+        print(tabla_memoria)
+
+        tabla_trabajos = PrettyTable()
+        tabla_trabajos.field_names = ['Número', 'Tiempo', 'Tamaño']
+        for trabajo in lista_trabajos:
+            tabla_trabajos.add_row([trabajo.numero, trabajo.tiempo, trabajo.tamano])
+
+        print()
+        print('Cola de trabajos:')
+        print(tabla_trabajos)
+
+        lista_mutex.release()
 
         names = [i.name for i in threading.enumerate()]
         if 'decrementar_tiempo' not in names:
             break
+
+        time.sleep(1)
 
 
 def decrementar_tiempo(lista_memoria: List[m.Bloque], lista_trabajos: List[m.Trabajo]):
