@@ -40,6 +40,7 @@ if __name__ == '__main__':
     lista_memoria = []
     lista_trabajos = []
     while True:
+        pa.limpiar()
         respuesta = menu()
         if respuesta == 0:
             break
@@ -55,4 +56,5 @@ if __name__ == '__main__':
             # lista_trabajos = leer_trabajo_txt(input("Ingrese nombre del archivo: "))
         else:
             print("Opción inválida.")
+
 
