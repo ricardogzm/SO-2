@@ -11,6 +11,7 @@ def insertar_trabajos(lista_memoria: List[m.Bloque], lista_trabajos: List[m.Trab
         trabajo = lista_trabajos[0]
         aux = lista_memoria[0]
 
+        # Obtiene el mejor candidato
         for bloque in lista_memoria:
             if not bloque.ocupado and bloque.tamano >= trabajo.tamano:
                 if aux.tamano - trabajo.tamano < 0:

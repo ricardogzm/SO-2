@@ -43,6 +43,7 @@ if __name__ == '__main__':
     while True:
         mg.limpiar()
         respuesta = menu()
+
         if respuesta == 0:
             break
         elif respuesta == 1:

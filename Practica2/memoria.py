@@ -1,6 +1,3 @@
-import threading
-
-
 class Trabajo:
     def __init__(self, numero: int, tiempo: int, tamano: int):
         self.numero = numero
